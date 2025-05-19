@@ -1,22 +1,22 @@
-# DataAnalytics-Assessment
+##DataAnalytics-Assessment
 
 This repository contains SQL queries for key financial and customer analytics tasks using Cowrywise dataset tables.
 
 ## 📊 Contents
 
-1. **High-Value Customers**
+1. High-Value Customers 
 A "funded" savings is identified by a positive amount in savings_savingsaccount.
 
 A "funded" investment plan is a plans_plan with a positive amount and a plan_type_id (assuming different plan types distinguish savings and investments).
 We'll assume:
 plan_type_id = 1 → savings plan
 plan_type_id = 2 → investment plan
-   - File: `01_high_value_customers.sql`
+   - File: `Q1_Assessment.sql`
    - Identifies customers with both savings and investment plans.
 
 
-2. **Transaction Frequency Analysis**
-   - File: `02_transaction_frequency_analysis.sql`
+2. Transaction Frequency Analysis
+   - File: `Q2_Assessment.sql`
    - Segments customers based on monthly transaction activity.
 
 Each row in savings_savingsaccount is a transaction.
@@ -32,8 +32,8 @@ Low Frequency: ≤2 transactions/month
 
 
 
-3. **Account Inactivity Alert**
-   - File: `03_account_inactivity_alert.sql`
+##3. Account Inactivity Alert
+   - File: `Q3_Assessment.sql`
    - Flags accounts with no inflow for over a year.
 
 Savings transactions are in savings_savingsaccount.
@@ -52,8 +52,8 @@ The last transaction date is based on transaction_date from savings_savingsaccou
 
 
 
-4. **Customer Lifetime Value (CLV)**
-   - File: `04_customer_lifetime_value.sql`
+##4. Customer Lifetime Value (CLV)
+   - File: `Q4_Assessment.sql`
    - Estimates CLV using account tenure and transaction data.
 
 To calculate Customer Lifetime Value (CLV) using a simplified model, we’ll compute:
