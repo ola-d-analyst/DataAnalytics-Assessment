@@ -17,15 +17,16 @@ plan_activity AS (
             ELSE 'Other'
         END AS type,
         lt.last_transaction_date,
-        DATE_PART('day', CURRENT_DATE - lt.last_transaction_date) AS inactivity_days
+        -- MySQL specific date difference
+        DATEDIFF(CURDATE(), lt.last_transaction_date) AS inactivity_days
     FROM plans_plan p
     LEFT JOIN latest_transactions lt ON p.id = lt.plan_id
-    WHERE 
+    WHERE
         (p.is_deleted = FALSE OR p.is_deleted IS NULL)
         AND (p.is_archived = FALSE OR p.is_archived IS NULL)
 )
 SELECT *
 FROM plan_activity
-WHERE 
+WHERE
     (last_transaction_date IS NULL OR inactivity_days > 365)
-ORDER BY inactivity_days DESC NULLS LAST;
+ORDER BY inactivity_days DESC;
